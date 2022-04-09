@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
@@ -28,6 +29,13 @@ Route::middleware(['auth'])->group(function() {
         Route::get('/dashboard', function () {
             return view('dashboard');
         })->name('dashboard');
+        Route::get('/product', [ProductController::class, 'index'])->name('admin.product.index');
+        Route::get('/add_product', [ProductController::class, 'addProduct'])->name('admin.product.add');
+        Route::post('/product_store', [ProductController::class, 'store'])->name('admin.product.store');
+        Route::get('/product/view/{product}', [ProductController::class, 'show'])->name('admin.product.show');
+        Route::get('/product/edit/{product}', [ProductController::class, 'edit'])->name('admin.product.edit');
+        Route::put('/product/update/{product}', [ProductController::class, 'update'])->name('admin.product.update');
+        Route::delete('/product/delete/{product}', [ProductController::class, 'destroy'])->name('admin.product.delete');
     });
 
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');

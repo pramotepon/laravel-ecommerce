@@ -118,10 +118,12 @@
                 </div>
                 <div class="product-card border">
                     <img src="{{ asset('images/no-img.jpg') }}" alt="" width="100%">
-                    <h3 class="pt-3">Product 5</h3>
-                    <p>{{ substr('Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet eligendi excepturi nobis! Laborum nemo odit culpa quidem velit omnis animi, adipisci reprehenderit ratione earum, repellat maiores laudantium perspiciatis, iste non.',0,120) }}
-                        .....</p>
-                    <p class="text-end">ราคา <span>123</span> บาท</p>
+                    <div class="ps-2 pe-2">
+                        <h3 class="pt-3">Product 5</h3>
+                        <p>{{ substr('Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet eligendi excepturi nobis! Laborum nemo odit culpa quidem velit omnis animi, adipisci reprehenderit ratione earum, repellat maiores laudantium perspiciatis, iste non.',0,120) }}
+                            .....</p>
+                        <p class="text-end">ราคา <span>123</span> บาท</p>
+                    </div>
                     <div class="btn-group d-flex" role="group">
                         <a href="#" class="btn btn-primary w-100">ดูข้อมูล</a>
                         <a href="#" class="btn btn-success w-100">ใส่รถเข็น</a>

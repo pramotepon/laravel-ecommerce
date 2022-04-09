@@ -9,13 +9,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('home.index') }}">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('order.index') }}">Order</a>
-                </li>
                 @if (Auth::user())
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('cart.index') }}"><i
                                 class="fa-solid fa-cart-shopping"></i> Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('order.index') }}">Order</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
@@ -23,7 +23,11 @@
                             {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDarkDropdownMenuLink">
-
+                            <li>
+                                <a class="dropdown-item" href="{{route('dashboard')}}">
+                                    Dashboard
+                                </a>
+                            </li>
                             <li class="text-end pe-3">
                                 <form method="post" action="{{ route('logout') }}">
                                     @csrf

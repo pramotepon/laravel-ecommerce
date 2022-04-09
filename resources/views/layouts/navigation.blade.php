@@ -15,6 +15,9 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.product.index')" :active="request()->routeIs('admin.product.index')">
+                        {{ __('Product') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -35,6 +38,9 @@
 
                     <x-slot name="content">
                         <!-- Authentication -->
+                        <x-dropdown-link :href="route('home.index')">
+                                {{ __('Website') }}
+                            </x-dropdown-link>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
