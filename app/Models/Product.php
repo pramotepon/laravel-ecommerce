@@ -10,4 +10,9 @@ class Product extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    // Join Table
+    public function cart(){
+        return $this->hasMany(Cart::class);
+    }
 }

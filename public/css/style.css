@@ -2,6 +2,16 @@ body{
     position: relative;
     min-height: 100vh;
 }
+.row{
+    width: 100%;
+}
+/* Alert Fixed right top */
+.alert-fix{
+    position: fixed!important;
+    top: 66px;
+    right: 10px;
+    z-index: 9999;
+}
 footer{
     position: absolute;
     width: 100%;

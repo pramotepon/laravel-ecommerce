@@ -59,76 +59,37 @@
 
 {{-- Main --}}
 @section('main')
+    @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show alert-fix" role="alert">
+            <strong>{{ session('success') }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @elseif (session('error'))
+        <div class="alert alert-danger alert-dismissible fade show alert-fix" role="alert">
+            <strong>{{ session('error') }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     <article class="bg-white">
         <div class="container pt-4 pb-4 ">
             <h1 class="text-center">สินค้า</h1>
 
             <div class="card-container">
-                <div class="product-card border">
-                    <img src="{{ asset('images/no-img.jpg') }}" alt="" width="100%">
-                    <div class="ps-2 pe-2">
-                        <h3 class="pt-3">Product 1</h3>
-                        <p>{{ substr('Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet eligendi excepturi nobis! Laborum nemo odit culpa quidem velit omnis animi, adipisci reprehenderit ratione earum, repellat maiores laudantium perspiciatis, iste non.',0,120) }}
-                            .....</p>
-                        <p class="text-end">ราคา <span>123</span> บาท</p>
+                @foreach ($products as $product)
+                    <div class="product-card border">
+                        <img src="{{ asset('images/products/'.$product->image) }}" alt="" width="100%">
+                        <div class="ps-2 pe-2">
+                            <h3 class="pt-3">{{ $product->name }}</h3>
+                            <p>{{ substr($product->detail, 0, 120) }}
+                                .....</p>
+                            <p class="text-end">ราคา <span>{{ $product->price }}</span> บาท</p>
+                        </div>
+                        <div class="btn-group d-flex" role="group">
+                            <a href="#" class="btn btn-primary w-100">ดูข้อมูล</a>
+                            <a href="{{ route('cart.add', $product->id) }}" class="btn btn-success w-100">ใส่รถเข็น</a>
+                        </div>
                     </div>
-                    <div class="btn-group d-flex" role="group">
-                        <a href="#" class="btn btn-primary w-100">ดูข้อมูล</a>
-                        <a href="#" class="btn btn-success w-100">ใส่รถเข็น</a>
-                    </div>
-                </div>
-                <div class="product-card border">
-                    <img src="{{ asset('images/no-img.jpg') }}" alt="" width="100%">
-                    <div class="ps-2 pe-2">
-                        <h3 class="pt-3">Product 2</h3>
-                        <p>{{ substr('Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet eligendi excepturi nobis! Laborum nemo odit culpa quidem velit omnis animi, adipisci reprehenderit ratione earum, repellat maiores laudantium perspiciatis, iste non.',0,120) }}
-                            .....</p>
-                        <p class="text-end">ราคา <span>123</span> บาท</p>
-                    </div>
-                    <div class="btn-group d-flex" role="group">
-                        <a href="#" class="btn btn-primary w-100">ดูข้อมูล</a>
-                        <a href="#" class="btn btn-success w-100">ใส่รถเข็น</a>
-                    </div>
-                </div>
-                <div class="product-card border">
-                    <img src="{{ asset('images/no-img.jpg') }}" alt="" width="100%">
-                    <div class="ps-2 pe-2">
-                        <h3 class="pt-3">Product 3</h3>
-                        <p>{{ substr('Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet eligendi excepturi nobis! Laborum nemo odit culpa quidem velit omnis animi, adipisci reprehenderit ratione earum, repellat maiores laudantium perspiciatis, iste non.',0,120) }}
-                            .....</p>
-                        <p class="text-end">ราคา <span>123</span> บาท</p>
-                    </div>
-                    <div class="btn-group d-flex" role="group">
-                        <a href="#" class="btn btn-primary w-100">ดูข้อมูล</a>
-                        <a href="#" class="btn btn-success w-100">ใส่รถเข็น</a>
-                    </div>
-                </div>
-                <div class="product-card border">
-                    <img src="{{ asset('images/no-img.jpg') }}" alt="" width="100%">
-                    <div class="ps-2 pe-2">
-                        <h3 class="pt-3">Product 4</h3>
-                        <p>{{ substr('Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet eligendi excepturi nobis! Laborum nemo odit culpa quidem velit omnis animi, adipisci reprehenderit ratione earum, repellat maiores laudantium perspiciatis, iste non.',0,120) }}
-                            .....</p>
-                        <p class="text-end">ราคา <span>123</span> บาท</p>
-                    </div>
-                    <div class="btn-group d-flex" role="group">
-                        <a href="#" class="btn btn-primary w-100">ดูข้อมูล</a>
-                        <a href="#" class="btn btn-success w-100">ใส่รถเข็น</a>
-                    </div>
-                </div>
-                <div class="product-card border">
-                    <img src="{{ asset('images/no-img.jpg') }}" alt="" width="100%">
-                    <div class="ps-2 pe-2">
-                        <h3 class="pt-3">Product 5</h3>
-                        <p>{{ substr('Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet eligendi excepturi nobis! Laborum nemo odit culpa quidem velit omnis animi, adipisci reprehenderit ratione earum, repellat maiores laudantium perspiciatis, iste non.',0,120) }}
-                            .....</p>
-                        <p class="text-end">ราคา <span>123</span> บาท</p>
-                    </div>
-                    <div class="btn-group d-flex" role="group">
-                        <a href="#" class="btn btn-primary w-100">ดูข้อมูล</a>
-                        <a href="#" class="btn btn-success w-100">ใส่รถเข็น</a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </article>
