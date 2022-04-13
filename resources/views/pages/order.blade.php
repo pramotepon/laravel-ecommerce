@@ -24,9 +24,13 @@
                                     <p>สถานะ :
                                         @if ($order->status === 1)
                                             <span class="text-warning">รอการตรวจสอบ</span>
+                                            @elseif ($order->status === 2)
+                                            <span class="text-success">กำลังจัดส่ง</span>
+                                            @elseif ($order->status === 3)
+                                            <span class="text-danger">ล้มเหลว</span>
                                         @endif
                                     </p>
-                                    <p>อ้างอิง : E4FEMSSMSMSNHI5</p>
+                                    <p>อ้างอิง : {{$order->order_code}}</p>
                                 </div>
                             </div>
                         </div>

@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('admin.product.index')" :active="request()->routeIs('admin.product.index')">
                         {{ __('Product') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.order.index')" :active="request()->routeIs('admin.order.index')">
+                        {{ __('รายการสั่งซื้อ') }}
+                    </x-nav-link>
                 </div>
             </div>
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
@@ -35,6 +36,10 @@ Route::middleware(['auth'])->group(function() {
         Route::get('/product/edit/{product}', [ProductController::class, 'edit'])->name('admin.product.edit');
         Route::put('/product/update/{product}', [ProductController::class, 'update'])->name('admin.product.update');
         Route::delete('/product/delete/{product}', [ProductController::class, 'destroy'])->name('admin.product.delete');
+
+        // Order
+        Route::get('/orders', [AdminOrderController::class, 'index'])->name('admin.order.index');
+        Route::post('/order/{order}', [AdminOrderController::class, 'update'])->name('admin.order.update');
     });
 
     // Cart Controller

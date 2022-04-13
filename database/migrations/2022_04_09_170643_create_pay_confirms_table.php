@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('date');
             $table->string('time');
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }

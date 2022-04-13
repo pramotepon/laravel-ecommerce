@@ -20,8 +20,8 @@ class CartController extends Controller
     }
 
     public function addCart(Product $product){
-
-        $user_cart = Cart::where('user_id',Auth::user()->id)->where('product_id',$product->id)->count();
+        // เมื่่อ เท่ากับ user_id ของตัวเอง และเมื่อ id สินค้า เท่ากับในฐานข้อมูล และเมื่อ status = 0
+        $user_cart = Cart::where('user_id',Auth::user()->id)->where('product_id',$product->id)->where('status',0)->count();
 
         if ($user_cart != 0) {
             return redirect()->back()->with('error', 'คุณเพิ่มสินค้านี้ไปแล้ว');

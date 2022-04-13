@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class OrderController extends Controller
 {
     public function index(){
-        $orders = Cart::where('user_id',Auth::user()->id)->where('status',1)->latest()->get();
+        $orders = Cart::where('user_id',Auth::user()->id)->where('status','!=',0)->latest()->get();
         return view('pages.order', compact('orders'));
     }
 }

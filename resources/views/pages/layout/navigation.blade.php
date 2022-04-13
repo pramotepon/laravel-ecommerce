@@ -23,11 +23,13 @@
                             {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDarkDropdownMenuLink">
-                            <li>
-                                <a class="dropdown-item" href="{{route('dashboard')}}">
-                                    Dashboard
-                                </a>
-                            </li>
+                            @if (Auth::user()->role == 'admin')
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('dashboard') }}">
+                                        Dashboard
+                                    </a>
+                                </li>
+                            @endif
                             <li class="text-end pe-3">
                                 <form method="post" action="{{ route('logout') }}">
                                     @csrf
